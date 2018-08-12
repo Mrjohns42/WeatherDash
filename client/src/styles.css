@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face{
+ font-family:'digital7';
+ src: url('assets/fonts/digital-7.ttf');
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	color: white;
+}
+
+body {
+	background-color: black;
+	height: 100vh;
+	width: 100vw;
+}

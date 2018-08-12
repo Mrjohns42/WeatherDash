@@ -1,0 +1,115 @@
+<div class="dash">
+  <div class="dash-grid">
+    <div class="clock-grid">
+      <div class="day digital">
+        <div>
+          {{ clock | date:'EEE' | uppercase}}
+        </div>
+        <div>
+          <span style="font-size: 50%">{{ clock | date:'(#W)' }}</span>
+        </div>
+      </div>
+      <div class="time digital">
+        <div>
+          {{ clock | date:'hh:mm'}}
+        </div>
+        <div>
+          <span style="font-size:50%">{{ clock | date:'a'}}</span>
+        </div>
+        
+      </div>
+      <div class="date digital">
+        {{ clock | date:'MM/dd'}}
+      </div>
+    </div>
+    <ng-container *ngIf="indoor?.thermostatList.length > 1 && !thermostatId; then selectThermostat; else displayThermostat"></ng-container>
+
+    <ng-template #selectThermostat>
+      <div class="thermSelect digital">
+        <div class="label digital">
+          Select Thermostat:
+        </div>
+        <div class="options">
+          <div *ngFor="let thermostat of indoor?.thermostatList">
+            <div class="option digital">
+              <a (click)="setThermostatId(thermostat.identifier)">{{ thermostat.name}} [{{ thermostat.identifier }}]</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template #displayThermostat>
+      <div class="indoor digital">
+        <div class="unit digital" (click)="toggleUnit()">
+          {{ settings.getTempSymbol() }}
+        </div>
+        <div class="location digital" fittext>INSIDE</div>
+        <div class="temp">        
+          <div class="value digital">
+            {{ (indoor?.thermostatList[getThermostatIdx()]?.runtime?.actualTemperature / 10 | number:'2.0-0') || '??' }}<span style="font-size:50%">.{{ (indoor?.thermostatList[getThermostatIdx()]?.runtime?.actualTemperature % 10 | number:'1.0-0') || '?' }}</span>
+          </div>
+        </div>
+        <div class="environment digital">
+          <div class="humidity digital">
+            <div class="label digital" style="font-size:50%">HUMIDITY</div>
+            <div class="value digital">
+              {{ indoor?.thermostatList[getThermostatIdx()]?.runtime?.actualHumidity  || '??' }}<span style="font-size:50%">%</span>
+            </div>
+          </div>
+          <div class="target digital">
+            <div class="label digital" style="font-size:50%">TARGET</div>
+            <div class="value digital">
+              {{ indoor?.thermostatList[getThermostatIdx()]?.runtime?.desiredHeat / 10 | number:'2.0-0' || '??' }}-{{ indoor?.thermostatList[getThermostatIdx()]?.runtime?.desiredCool / 10 | number:'2.0-0' || '??' }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+    <div class="outdoor">
+      <div class="unit digital" (click)="toggleUnit()">
+        {{ settings.getTempSymbol() }}
+      </div>
+      <div class="location digital" (click)="promptZip()" fittext>{{ weather?.name || 'OUTSIDE'}}</div>
+      <div class="temp">
+        <div class="value digital">
+          {{ (weather?.main?.temp - (weather?.main?.temp % 1) | number:'2.0-0') || '??' }}<span style="font-size:50%">.{{ (weather?.main?.temp % 1 * 10 | number:'1.0-0') || '?' }}</span>
+        </div>
+      </div>
+      <div class="environment digital">
+        <div class="humidity digital">
+          <div class="label digital" style="font-size:50%">HUMIDITY</div>
+          <div class="value digital">
+            {{ weather?.main?.humidity || '??' }}<span style="font-size:50%">%</span>
+          </div>
+        </div>
+        <div class="wind digital">
+          <div class="label digital" style="font-size:50%">WIND</div>
+          <div class="value digital">
+            {{ (weather?.wind?.speed  | number:'1.0-0' ) || '??' }}<span style="font-size:50%">{{ settings.getSpeedSymbol() || '??'}}</span>
+          </div>
+        </div>        
+      </div>
+    </div>
+
+    <div id="forecast" class="forecast digital no-select">
+      <div class="report" *ngFor="let report of forecast?.list" [ngSwitch]="daysAway(report.dt)">
+        <div class="report-day" *ngSwitchCase="0">Today</div>
+        <div class="report-day" *ngSwitchCase="1">Tomorrow</div>
+        <div class="report-day" *ngSwitchDefault>{{ report.dt | date:'EEEE' }}</div>
+        <div class='report-status'>
+          <div class='report-status-temp'>{{ report?.main?.temp | number:'2.0-0' }}</div>
+          <div class='report-status-icon'>
+            <i class='owf owf-fw owf-{{report?.weather[0]?.id}}-{{dayOrNight(report.dt)}}'></i>
+          </div>
+          <div class='report-status-desc'>{{ report?.weather[0]?.description }}</div>
+        </div>
+        <div class="report-time">
+          {{ report.dt | date:'hh:mm a' }}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
