@@ -1,6 +1,6 @@
 # WeatherDash
-**Smart weather dashboard. **
-**Integrates with OpenWeatherMaps and Ecobee. **
+**Smart weather dashboard.**
+**Integrates with OpenWeatherMaps and Ecobee.**
 **Designed to run on RaspberryPi.**
 **Written with Node and Angular.**
  
@@ -39,8 +39,7 @@ After that succeeds, no further manual interaction with the server should be nec
 From that point, the server will access the OpenWeatherMaps and Ecobee APIs, negotiate token refreshes, and host an API endpoint for the client application.
 The WeatherDash API endpoint will be hosted at localhost:8000
 
-
-##Client
+## Client
 The WeatherDash client is an Angular application.
 
 The client is designed to:
@@ -50,7 +49,7 @@ The client is designed to:
 - Display Ecobee indoor climate info
 - Display OpenWeatherMaps city climate info
 - Display OpenWeatherMaps city forecast info
-###Setting Up the Client
+### Setting Up the Client
 	cd client
 #### Install Dependencies
 	npm install
@@ -62,7 +61,7 @@ The client is designed to:
 **The WeatherDash UI will be hosted at localhost:4200**
 
 
-##Using the App
+## Using the App
 In your browser, navigate to: **localhost:4200**
 
 There's just a few interactions possible with the app:
