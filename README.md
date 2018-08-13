@@ -1,8 +1,9 @@
 # WeatherDash
-**Smart weather dashboard.**
-**Integrates with OpenWeatherMaps and Ecobee.**
-**Designed to run on RaspberryPi.**
-**Written with Node and Angular.**
+
+**Smart weather dashboard.
+Integrates with OpenWeatherMaps and Ecobee.
+Designed to run on RaspberryPi.
+Written with Node and Angular.**
  
  
 ## Server
