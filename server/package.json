@@ -1,7 +1,7 @@
 {
   "name": "weatherserver",
   "version": "1.0.0",
-  "description": "API Server for WeatherDash",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "pretest": "eslint . && echo \"Lint Passed\"",
@@ -13,11 +13,11 @@
   "dependencies": {
     "cors": "^2.8.4",
     "dateformat": "^3.0.3",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "eslint": "^5.3.0",
     "eslint-config-strongloop": "^2.1.0"
-  },
-  "description": ""
+  }
 }
