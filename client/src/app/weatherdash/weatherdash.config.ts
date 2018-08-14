@@ -7,7 +7,7 @@ const SPEED_UNITS = {[UNIT_IMPERIAL]: 'mph', [UNIT_METRIC]: 'm/s'};
 
 
 // Change these to desired values
-const defaultZip = '92104';
+const defaultZip = '60613';
 const defaultUnit = UNIT_IMPERIAL;
 
 
