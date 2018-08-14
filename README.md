@@ -77,6 +77,48 @@ There's just a few interactions possible with the app:
 
 
 ## Setting Up On Raspberry Pi
-You need a Raspberry Pi board with some form of display output.  This could be HDMI to a monitor, a MIPI display, a VNC/RDP session, etc.  You'll also need a network connection, via onboard WiFi, WiFi dongle, or ethernet cable.  And of course, some method for input will be necessary, be it a USB keyboard or ssh.
+You will need a Raspberry Pi board with some form of display output.  This could be HDMI to a monitor, a MIPI display, a VNC/RDP session, etc.  You'll also need a network connection, via onboard WiFi, WiFi dongle, or ethernet cable.  And of course, some method for input will be necessary, be it a USB keyboard or ssh.
 
 Personally, I'll be using a Raspoberry Pi 2 Model B, with the Official Raspberry Pi Touch Display.  Both will be housed in a SmartiPi Touch case.  Since the Pi 2B doesn't have onboard WiFi, I'll be using a cheap (RTL8188CUS) WiFi dongle.  And lastly, a USB keyboard during initial configuration.
+
+Setup your Pi with Raspbian according to the official documentation.  Follow through the steps to get a network connection and configure your display if necessary.
+
+Then, you'll want to install a modern version of Node and NPM:
+
+	curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+	sudo apt-get install -y nodejs
+	
+Downloading NPM packages and building Angular applications can be a bit slow on the Raspberry Pi.  As an optional step, you may wish to overclock your Pi.  This can be done via the Overclock menu in:
+
+	sudo raspi-config
+	
+(*Note*: You'll want to reboot if you changed any Overclock settings)
+	
+With NPM, install the Angular CLI and HTTP Server:
+
+	npm install -g @angular/cli
+	npm install -g angular-http-server
+	
+If you haven't done so already, clone this repo:
+
+	git clone https://github.com/Mrjohns42/WeatherDash.git /home/pi/WeatherDash
+	
+Follow the sections above to setup and start the Server and Client, and then open the WeatherDash app in a browser to verify your setup was done correctly. 
+
+To automatically run the Client and Server and open the WeatherDash app in fullscreen mode, there is a helpful bash script in the root of the repo.
+
+	startup.sh
+	
+(*Note*: to exit Chromium's Kiosk Mode, use Alt + F4)
+	
+To run this script automatically at Login, add the following line to **/home/pi/.config/lxsession/LXDE-pi/autostart**:
+	
+	@lxterminal -e /home/pi/WeatherDash/startup.sh
+	
+ENJOY!
+	
+
+	
+	
+	
+	
