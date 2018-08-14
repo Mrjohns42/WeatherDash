@@ -83,22 +83,34 @@ Personally, I'll be using a Raspoberry Pi 2 Model B, with the Official Raspberry
 
 Setup your Pi with Raspbian according to the official documentation.  Follow through the steps to get a network connection and configure your display if necessary.
 
-Then, you'll want to install a modern version of Node and NPM:
-
-	curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-	sudo apt-get install -y nodejs
+### Disable Screensaver
+You'll likely want to disable the screensaver so that the WeatherDash app is always on display:
 	
+	sudo apt-get install xscreensaver
+	xscreensaver
+
+Click **Settings**, and set **Mode** to **Disable Screen Saver**
+
+### Overclock (optional)
 Downloading NPM packages and building Angular applications can be a bit slow on the Raspberry Pi.  As an optional step, you may wish to overclock your Pi.  This can be done via the Overclock menu in:
 
 	sudo raspi-config
 	
 (*Note*: You'll want to reboot if you changed any Overclock settings)
 	
+### Install Node and NPM
+Then, you'll want to install a modern version of Node nd NPM:
+
+	curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+	sudo apt-get install -y nodejs
+	
+
 With NPM, install the Angular CLI and HTTP Server:
 
 	npm install -g @angular/cli
 	npm install -g angular-http-server
 	
+### Install WeatherDash
 If you haven't done so already, clone this repo:
 
 	git clone https://github.com/Mrjohns42/WeatherDash.git /home/pi/WeatherDash
@@ -115,7 +127,9 @@ To run this script automatically at Login, add the following line to **/home/pi/
 	
 	@lxterminal -e /home/pi/WeatherDash/startup.sh
 	
-ENJOY!
+Then reboot, and WeatherDash should automatically build and launch.
+	
+#### ENJOY!
 	
 
 	
