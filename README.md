@@ -74,3 +74,9 @@ There's just a few interactions possible with the app:
 - Clicking the City Name will allow you to change the zip code.  Your choice will be saved across sessions via localStorage.
 - Clicking the Unit Symbol (in the upperleft corner of either Indoor or Local weather) will allow you switch between Imperial and Metric units.  Your choice will be saved across sessions via localStorage.
 - The Forecast can be dragged horizontally to view up to 5 days of weather outlook.
+
+
+## Setting Up On Raspberry Pi
+You need a Raspberry Pi board with some form of display output.  This could be HDMI to a monitor, a MIPI display, a VNC/RDP session, etc.  You'll also need a network connection, via onboard WiFi, WiFi dongle, or ethernet cable.  And of course, some method for input will be necessary, be it a USB keyboard or ssh.
+
+Personally, I'll be using a Raspoberry Pi 2 Model B, with the Official Raspberry Pi Touch Display.  Both will be housed in a SmartiPi Touch case.  Since the Pi 2B doesn't have onboard WiFi, I'll be using a cheap (RTL8188CUS) WiFi dongle.  And lastly, a USB keyboard during initial configuration.
