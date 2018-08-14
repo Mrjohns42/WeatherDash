@@ -99,7 +99,7 @@ Downloading NPM packages and building Angular applications can be a bit slow on 
 (*Note*: You'll want to reboot if you changed any Overclock settings)
 	
 ### Install Node and NPM
-Then, you'll want to install a modern version of Node nd NPM:
+Then, you'll want to install a modern version of Node and NPM:
 
 	curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 	sudo apt-get install -y nodejs
