@@ -83,13 +83,22 @@ Personally, I'll be using a Raspoberry Pi 2 Model B, with the Official Raspberry
 
 Setup your Pi with Raspbian according to the official documentation.  Follow through the steps to get a network connection and configure your display if necessary.
 
-### Disable Screensaver
+### Disable Screensaver (optional)
 You'll likely want to disable the screensaver so that the WeatherDash app is always on display:
 	
 	sudo apt-get install xscreensaver
 	xscreensaver
 
 Click **Settings**, and set **Mode** to **Disable Screen Saver**
+
+### Hide Cursor on Idle (optional)
+Install unclutter:
+
+	sudo apt-get install unclutter
+
+To hide cursor after being idle for 3 seconds, add the following line to **/home/pi/.config/lxsession/LXDE-pi/autostart**:
+
+	@unclutter -idle 3
 
 ### Dim Backlight (optional)
 If you are using the offical Raspberry Pi 7" Touch Display, there's a virtual filesystem which can be used to interact with the display:
