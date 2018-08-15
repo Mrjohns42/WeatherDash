@@ -91,6 +91,13 @@ You'll likely want to disable the screensaver so that the WeatherDash app is alw
 
 Click **Settings**, and set **Mode** to **Disable Screen Saver**
 
+### Dim Backlight (optional)
+If you are using the offical Raspberry Pi 7" Touch Display, there's a virtual filesystem which can be used to interact with the display:
+
+	sudo sh -c 'echo "128" > /sys/class/backlight/rpi_backlight/brightness'
+	
+The number you echo must be between 0 and 255.  Find a number that works for you.  You want to set it such that the display is bright enough to cut through most glare in a well-lit room while also dim enough to not be harsh in a darkened room.  Lower brightness means lower power consumption. I eventually settled on 20.
+
 ### Overclock (optional)
 Downloading NPM packages and building Angular applications can be a bit slow on the Raspberry Pi.  As an optional step, you may wish to overclock your Pi.  This can be done via the Overclock menu in:
 
