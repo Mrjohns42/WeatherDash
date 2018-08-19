@@ -43,5 +43,5 @@ echo "Client Host online."
 
 cd ${SCRIPT_DIR}
 echo "Launching WeatherDash"
-x-terminal-emulator -e chromium-browser --kiosk ${CLIENT_ADDR}
+x-terminal-emulator -e chromium-browser --start-fullscreen ${CLIENT_ADDR}
 
