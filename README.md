@@ -137,11 +137,11 @@ To automatically run the Client and Server and open the WeatherDash app in fulls
 
 	startup.sh
 	
-(*Note*: to exit Chromium's Kiosk Mode, use Alt + F4)
+(*Note*: to exit Chromium's Fullscreen Mode, use F11)
 	
 To run this script automatically at Login, add the following line to **/home/pi/.config/lxsession/LXDE-pi/autostart**:
-	
-	@lxterminal -e /home/pi/WeatherDash/startup.sh
+
+	@lxterminal -e /home/pi/WeatherDash/startup.sh	
 	
 Then reboot, and WeatherDash should automatically build and launch.
 	
