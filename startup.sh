@@ -43,6 +43,23 @@ done
 echo "Client Host online."
 
 cd ${SCRIPT_DIR}
+echo "Cleaning up Chromium"
+#Delete SingletonLock
+rm -f ~/.config/chromium/SingletonLock
+rm -rf ~/.cache/chromium
+#Clean up the randomly-named file(s)
+for i in ~/.config/chromium/Default/.org.chromium.Chromium.*; do
+    sed -i 's/"exited_cleanly": false/"exited_cleanly": true/' $i
+    sed -i 's/"exit_state": "Crashed"/"exit_state": "Normal"/' $i
+    sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' $i
+done
+#Clean up Preferences
+sed -i 's/"exited_cleanly": false/"exited_cleanly": true/' ~/.config/chromium/Default/Preferences
+sed -i 's/"exit_state": "Crashed"/"exit_state": "Normal"/' ~/.config/chromium/Default/Preferences
+sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' ~/.config/chromium/Default/Preferences
+#Clean up Local State
+sed -i 's/"exited_cleanly": false/"exited_cleanly": true/' ~/.config/chromium/"Local State"
+
 echo "Launching WeatherDash"
 x-terminal-emulator -t "WeatherDash Console" -e bash -c "chromium-browser --start-fullscreen --enable-logging=stderr -rv=1 ${CLIENT_ADDR} 2>&1 | tee ${SCRIPT_DIR}/browser.log"
 
