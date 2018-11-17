@@ -79,7 +79,7 @@ There's just a few interactions possible with the app:
 ## Setting Up On Raspberry Pi
 You will need a Raspberry Pi board with some form of display output.  This could be HDMI to a monitor, a MIPI display, a VNC/RDP session, etc.  You'll also need a network connection, via onboard WiFi, WiFi dongle, or ethernet cable.  And of course, some method for input will be necessary, be it a USB keyboard or ssh.
 
-Personally, I'll be using a Raspoberry Pi 2 Model B, with the Official Raspberry Pi Touch Display.  Both will be housed in a SmartiPi Touch case.  Since the Pi 2B doesn't have onboard WiFi, I'll be using a cheap (RTL8188CUS) WiFi dongle.  And lastly, a USB keyboard during initial configuration.
+Personally, I'll be using a Raspberry Pi 2 Model B, with the Official Raspberry Pi Touch Display.  Both will be housed in a SmartiPi Touch case.  Since the Pi 2B doesn't have onboard WiFi, I'll be using a cheap (RTL8188CUS) WiFi dongle.  And lastly, a USB keyboard during initial configuration.
 
 Setup your Pi with Raspbian according to the official documentation.  Follow through the steps to get a network connection and configure your display if necessary.
 

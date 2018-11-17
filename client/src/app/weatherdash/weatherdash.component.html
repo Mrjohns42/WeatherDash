@@ -9,7 +9,7 @@
           <span style="font-size: 50%">{{ clock | date:'(#W)' }}</span>
         </div>
       </div>
-      <div class="time digital">
+      <div class="time digital" (click)="refreshPage()">
         <div>
           {{ clock | date:'hh:mm'}}
         </div>
@@ -41,11 +41,14 @@
 
     <ng-template #displayThermostat>
       <div class="indoor digital">
-        <div class="unit digital" (click)="toggleUnit()">
-          {{ settings.getTempSymbol() }}
+        <div class="unit digital">
+          <div class="tempsymbol digital" (click)="toggleUnit()">
+            {{ settings.getTempSymbol() }}
+          </div>
+          <div class="errdot digital" *ngIf="indoorErr" (click)="refreshPage()"></div>
         </div>
         <div class="location digital" fittext>INSIDE</div>
-        <div class="temp">        
+        <div class="temp">
           <div class="value digital">
             {{ (indoor?.thermostatList[getThermostatIdx()]?.runtime?.actualTemperature / 10 | number:'2.0-0') || '??' }}<span style="font-size:50%">.{{ (indoor?.thermostatList[getThermostatIdx()]?.runtime?.actualTemperature % 10 | number:'1.0-0') || '?' }}</span>
           </div>
@@ -68,8 +71,11 @@
     </ng-template>
 
     <div class="outdoor">
-      <div class="unit digital" (click)="toggleUnit()">
-        {{ settings.getTempSymbol() }}
+      <div class="unit digital">
+          <div class="tempsymbol digital" (click)="toggleUnit()">
+            {{ settings.getTempSymbol() }}
+          </div>
+          <div class="errdot digital" *ngIf="weatherErr" (click)="refreshPage()"></div>
       </div>
       <div class="location digital" (click)="promptZip()" fittext>{{ weather?.name || 'OUTSIDE'}}</div>
       <div class="temp">
@@ -89,7 +95,7 @@
           <div class="value digital">
             {{ (weather?.wind?.speed  | number:'1.0-0' ) || '??' }}<span style="font-size:50%">{{ settings.getSpeedSymbol() || '??'}}</span>
           </div>
-        </div>        
+        </div>
       </div>
     </div>
 

@@ -20,10 +20,12 @@ export class WeatherdashComponent implements OnInit {
   clock = null ;
   weatherTimer;
   weather = null;
+  weatherErr = true;
   forecastTimer;
   forecast = null;
   indoorTimer;
   indoor = null;
+  indoorErr = true;
   thermostatId = null;
   idx = null;
   forecastScroll = null;
@@ -87,7 +89,10 @@ export class WeatherdashComponent implements OnInit {
       const weather = new OWMWeather(data);
       console.log('Weather:', weather);
       if (Number(weather.code) === HTTP_STATUS_OK) {
+        this.weatherErr = false;
         this.weather = weather;
+      } else {
+        this.weatherErr = true;
       }
     });
   }
@@ -107,7 +112,10 @@ export class WeatherdashComponent implements OnInit {
       const indoor = new EcobeeIndoor(data);
       console.log('Indoor:', indoor);
       if (Number(indoor.status.code) === 0) {
+        this.indoorErr = false;
         this.indoor = indoor;
+      } else {
+        this.indoorErr = true;
       }
     });
   }
@@ -169,5 +177,9 @@ export class WeatherdashComponent implements OnInit {
     const unit = this.settings.nextUnit();
     self.settings.setUnit(unit);
     this.updateSettings(null, unit);
+  }
+
+  refreshPage() {
+    window.location.reload();
   }
 }
