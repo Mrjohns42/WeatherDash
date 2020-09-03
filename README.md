@@ -1,5 +1,7 @@
 # WeatherDash
 
+![TADA!](images/WeatherDashUI.PNG)
+
 **Smart weather dashboard.**
 
 **Integrates with OpenWeatherMaps and Ecobee.**
