@@ -49,9 +49,9 @@ rm -f ~/.config/chromium/SingletonLock
 rm -rf ~/.cache/chromium
 #Clean up the randomly-named file(s)
 for i in ~/.config/chromium/Default/.org.chromium.Chromium.*; do
-    sed -i 's/"exited_cleanly": false/"exited_cleanly": true/' $i
-    sed -i 's/"exit_state": "Crashed"/"exit_state": "Normal"/' $i
-    sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' $i
+    sed -i 's/"exited_cleanly": false/"exited_cleanly": true/' $i || true
+    sed -i 's/"exit_state": "Crashed"/"exit_state": "Normal"/' $i || true
+    sed -i 's/"exit_type":"Crashed"/"exit_type":"Normal"/' $i     || true
 done
 #Clean up Preferences
 sed -i 's/"exited_cleanly": false/"exited_cleanly": true/' ~/.config/chromium/Default/Preferences
